@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Poker</title>
+		
+		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="js/poker.js"></script>
+	</head>
+	<body>
+		Játékos neve: <input id="playerName" type="text" /> <input type="button" value="Start" onclick="startNewGame();" />
+	
+		<div id="gameHolder" style="display: none; margin-top: 10px;">
+			Játékos: <span id="playerNameHolder" style="padding: 0px 15px 0px 3px;"></span>
+			<input id="newDealButton" type="button" value="Új leosztás" onclick="getNewDeal();" />
+			<input id="evaluateButton" style="display:none;" type="button" value="Kiértékel" onclick="evaluateCards();" />
+			<div id="handsHolder"></div>
+		</div>
+	</body>
+</html>
