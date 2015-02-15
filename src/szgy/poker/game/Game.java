@@ -15,6 +15,9 @@ public class Game {
 		newDeck();
 	}
 	
+	/**
+	 * Létrehoz egy új paklit.
+	 */
 	public void newDeck() {
 		deck = new Stack<Card>();
 		CardSuit[] suits = CardSuit.values();
@@ -27,11 +30,18 @@ public class Game {
 		shuffle();
 	}
 	
+	/**
+	 * Megkeveri a paklit
+	 */
 	public void shuffle() {
 		long seed = System.currentTimeMillis();
 		Collections.shuffle(deck, new Random(seed));
 	}
 	
+	/**
+	 * Kiosztja a lapokat.
+	 * @throws PlayerException Abban az esetben, ha a játékos nem a szabályoknak megfelelõen kap lapot.
+	 */
 	public void deal() throws PlayerException {
 		Card[] newCards = new Card[5];
 		for(int i = 0; i < 5; i++) {

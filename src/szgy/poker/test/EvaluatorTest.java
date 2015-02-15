@@ -18,6 +18,7 @@ public class EvaluatorTest {
 		try {
 			FiveCardEvaluator evaluator  = new FiveCardEvaluator();
 			
+			// Magas lap tesztje
 			Card[] highCardHand = {new Card(CardSuit.SPADES, CardRank.ACE), 
 								new Card(CardSuit.DIAMONDS, CardRank.KING), 
 								new Card(CardSuit.HEARTS, CardRank.NINE),
@@ -26,6 +27,7 @@ public class EvaluatorTest {
 			HandRank highCardHandExpected = HandRank.HIGH_CARD;
 			assertEquals("Magas lap", highCardHandExpected, evaluator.evaluate(highCardHand).getHandRank());
 			
+			// Egy pár tesztje
 			Card[] pairHand = {new Card(CardSuit.SPADES, CardRank.ACE), 
 								new Card(CardSuit.DIAMONDS, CardRank.KING), 
 								new Card(CardSuit.HEARTS, CardRank.NINE),
@@ -34,7 +36,7 @@ public class EvaluatorTest {
 			HandRank pairHandExpected = HandRank.PAIR;
 			assertEquals("Egy pár", pairHandExpected, evaluator.evaluate(pairHand).getHandRank());
 			
-
+			// Két pár tesztje
 			Card[] twoPairHand = {new Card(CardSuit.SPADES, CardRank.QUEEN), 
 								new Card(CardSuit.DIAMONDS, CardRank.KING), 
 								new Card(CardSuit.HEARTS, CardRank.NINE),
@@ -43,6 +45,7 @@ public class EvaluatorTest {
 			HandRank twoPairHandExpected = HandRank.TWO_PAIR;
 			assertEquals("Két pár", twoPairHandExpected, evaluator.evaluate(twoPairHand).getHandRank());
 
+			// Drill tesztje
 			Card[] threeOfAKindHand = {new Card(CardSuit.SPADES, CardRank.NINE), 
 								new Card(CardSuit.DIAMONDS, CardRank.KING), 
 								new Card(CardSuit.HEARTS, CardRank.NINE),
@@ -51,6 +54,7 @@ public class EvaluatorTest {
 			HandRank threeOfAKindHandExpected = HandRank.THREE_OF_A_KIND;
 			assertEquals("Drill", threeOfAKindHandExpected, evaluator.evaluate(threeOfAKindHand).getHandRank());
 
+			// Sor tesztje
 			Card[] starightHand = {new Card(CardSuit.SPADES, CardRank.ACE), 
 								new Card(CardSuit.DIAMONDS, CardRank.KING), 
 								new Card(CardSuit.HEARTS, CardRank.JACK),
@@ -59,6 +63,7 @@ public class EvaluatorTest {
 			HandRank straightHandExpected = HandRank.STRAIGHT;
 			assertEquals("Sor", straightHandExpected, evaluator.evaluate(starightHand).getHandRank());
 
+			//Flöss tesztje
 			Card[] flushHand = {new Card(CardSuit.SPADES, CardRank.ACE), 
 								new Card(CardSuit.SPADES, CardRank.KING), 
 								new Card(CardSuit.SPADES, CardRank.THREE),
@@ -67,6 +72,7 @@ public class EvaluatorTest {
 			HandRank flushHandExpected = HandRank.FLUSH;
 			assertEquals("Flöss", flushHandExpected, evaluator.evaluate(flushHand).getHandRank());
 
+			// Full tesztje
 			Card[] fullHouseHand = {new Card(CardSuit.SPADES, CardRank.ACE), 
 								new Card(CardSuit.DIAMONDS, CardRank.ACE), 
 								new Card(CardSuit.HEARTS, CardRank.ACE),
@@ -75,6 +81,7 @@ public class EvaluatorTest {
 			HandRank fullHouseHandExpected = HandRank.FULL_HOUSE;
 			assertEquals("Full", fullHouseHandExpected, evaluator.evaluate(fullHouseHand).getHandRank());
 
+			// Poker tesztje
 			Card[] fourOfAKindHand = {new Card(CardSuit.SPADES, CardRank.NINE), 
 								new Card(CardSuit.DIAMONDS, CardRank.NINE), 
 								new Card(CardSuit.HEARTS, CardRank.NINE),
@@ -83,6 +90,7 @@ public class EvaluatorTest {
 			HandRank fourOfAKindHandExpected = HandRank.FOUR_OF_A_KIND;
 			assertEquals("Póker", fourOfAKindHandExpected, evaluator.evaluate(fourOfAKindHand).getHandRank());
 
+			// Színsor tesztje
 			Card[] straightFlushHand = {new Card(CardSuit.SPADES, CardRank.TEN), 
 								new Card(CardSuit.SPADES, CardRank.EIGHT), 
 								new Card(CardSuit.SPADES, CardRank.SIX),
@@ -91,6 +99,7 @@ public class EvaluatorTest {
 			HandRank straightFlushHandExpected = HandRank.STRAIGHT_FLUSH;
 			assertEquals("Színsor", straightFlushHandExpected, evaluator.evaluate(straightFlushHand).getHandRank());
 			
+			// Royal flöss tesztje
 			Card[] royalFlushhHand = {new Card(CardSuit.SPADES, CardRank.JACK), 
 								new Card(CardSuit.SPADES, CardRank.KING), 
 								new Card(CardSuit.SPADES, CardRank.TEN),

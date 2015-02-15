@@ -1,6 +1,6 @@
 package szgy.poker.game;
 
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 
 public class Hand implements JSONAble {
 	protected HandRank handRank;
@@ -49,13 +49,14 @@ public class Hand implements JSONAble {
 				+ ", highCard=" + highCard + "]";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject toJSON() {
 		JSONObject cardObject = new JSONObject();
-		cardObject.append("handRank", handRank);
-		cardObject.append("value", value);
-		cardObject.append("highCard", highCard);
-		cardObject.append("name", handRank.getName());
+		cardObject.put("handRank", handRank.toString());
+		cardObject.put("value", value);
+		cardObject.put("highCard", highCard.toString());
+		cardObject.put("name", handRank.getName());
 		return cardObject;
 	}
 }

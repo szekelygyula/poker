@@ -1,3 +1,6 @@
+/**
+ * Elküldi a kérést az új játékra
+ */
 function startNewGame() {
 	var playerName = $('#playerName').val();
 	if(playerName == "") {
@@ -21,6 +24,9 @@ function startNewGame() {
 	}
 }
 
+/**
+ * Elküldi a kérést az új osztásra
+ */
 function getNewDeal() {
 	$.ajax({
 		type: 'POST',
@@ -38,6 +44,11 @@ function getNewDeal() {
 	});
 }
 
+/**
+ * Létrehoz egy leosztást tartalmazó HTML objektumot.
+ * @param cards A leosztásban szereplõ lapok
+ * @returns A leosztás HTML ojektuma
+ */
 function buildNewDeal(cards) {
 	var dealHolder = $('<div class="deal_holder"></div>');
 	for(var i = 0; i < cards.length; i++) {
@@ -48,6 +59,9 @@ function buildNewDeal(cards) {
 	return dealHolder;
 }
 
+/**
+ * Elküldi a kérést a lapok kiértékelésére
+ */
 function evaluateCards() {
 	$.ajax({
 		type: 'POST',
@@ -64,9 +78,12 @@ function evaluateCards() {
 	});
 }
 
+/**
+ * Megjeleníti a kiértékelés eredményét a lapok mellett
+ * @param handObject A kiértékelés eredménye
+ */
 function displayEvaluation(handObject) {
 	var handBox = $('#handsHolder .deal_holder')[0];
 	var displayBox = $(handBox).find('.evaluate_box');
-//	displayBox.empty();
 	displayBox.text(handObject.name);
 }

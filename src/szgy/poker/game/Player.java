@@ -16,6 +16,11 @@ public class Player {
 		cards = new Card[5];
 	}
 	
+	/**
+	 * Megkapja a leosztást
+	 * @param cards A kapott lapok
+	 * @throws PlayerException Abban az esetben ha a kapott lapok száma nem megfelelõ
+	 */
 	public void giveDeal(Card[] cards) throws PlayerException {
 		if(cards == null) throw new PlayerException("No cards given!");
 		if(cards.length > 5) throw new PlayerException("Too much card given!");

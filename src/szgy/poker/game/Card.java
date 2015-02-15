@@ -1,6 +1,6 @@
 package szgy.poker.game;
 
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 
 public class Card implements Comparable<Card>, JSONAble {
 	protected CardSuit suit;
@@ -37,16 +37,17 @@ public class Card implements Comparable<Card>, JSONAble {
 	}
 
 	@Override
-	public int compareTo(Card campareCard) {
-		int compareRank = ((Card) campareCard).rank.getValue(); 
+	public int compareTo(Card compareCard) {
+		int compareRank = ((Card) compareCard).rank.getValue(); 
 		return this.rank.getValue() - compareRank;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject toJSON() {
 		JSONObject cardObject = new JSONObject();
-		cardObject.append("suit", suit);
-		cardObject.append("rank", rank);
+		cardObject.put("suit", suit.toString());
+		cardObject.put("rank", rank.toString());
 		return cardObject;
 	}
 }

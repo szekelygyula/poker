@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+//import org.json.JSONObject;
+
+
+
+import org.json.simple.JSONObject;
 
 import szgy.poker.action.GameAction;
 import szgy.poker.game.Game;
@@ -26,14 +30,12 @@ public class GameServlet extends HttpServlet {
      */
     public GameServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		process(request, response);
 	}
 
@@ -41,10 +43,15 @@ public class GameServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		process(request, response);
 	}
 	
+	/**
+	 * Feldolgozza a klienstõl kapott kéréseket
+	 * @param request A kérés objektuma
+	 * @param response A válasz objektuma
+	 */
+	@SuppressWarnings("unchecked")
 	protected void process(HttpServletRequest request, HttpServletResponse response) {
 		String action = "";
 		GameAction gameAction;
@@ -73,9 +80,9 @@ public class GameServlet extends HttpServlet {
 			try {
 				response.setCharacterEncoding("UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println(responseObject.toString());
+				out.println(responseObject.toJSONString());
 			} catch (Exception t) {
-				
+				t.printStackTrace();
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 package szgy.poker.action;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import szgy.poker.exception.EvaluatorException;
 import szgy.poker.exception.PlayerException;
@@ -19,6 +19,12 @@ public class GameAction {
 		this.game = game;
 	}
 	
+	/**
+	 * Létrehoz egy új játékot
+	 * @param playerName A játékot játszó játékos neve
+	 * @return A létrehozás eredményét tartalmazó JSONObject
+	 */
+	@SuppressWarnings("unchecked")
 	public JSONObject newGame(String playerName) {
 		JSONObject object = new JSONObject();
 		game = new Game();
@@ -30,6 +36,12 @@ public class GameAction {
 		return object;
 	}
 
+	/**
+	 * Új lapokat oszt a játékosnak
+	 * @return Az osztás eredményét tartalmazó JSONObject
+	 * @throws PlayerException Abban az esetben, ha a játékos nem a szabályoknak megfelelõen kap lapot
+	 */
+	@SuppressWarnings("unchecked")
 	public JSONObject newDeal() throws PlayerException {
 		JSONObject object = new JSONObject();
 		game.newDeck();
@@ -37,14 +49,20 @@ public class GameAction {
 		Player player = game.getPlayer();
 		JSONArray cardsArray = new JSONArray();
 		for(Card actCard : player.getCards()) {
-			cardsArray.put(actCard.toJSON());
+			cardsArray.add(actCard.toJSON());
 		}
 		object.put("status", "success");
 		object.put("msg", "Új leosztás sikeres");
 		object.put("cards", cardsArray);
 		return object;
 	}
-
+	
+	/**
+	 * Kiértékeli a játékos lapjait
+	 * @return A kiértékelés eredményét tartalmazó JSONObject
+	 * @throws EvaluatorException Abban az esetben, ha a kiértékelõnek adott lapok nem felelnek meg a szabályoknak.
+	 */
+	@SuppressWarnings("unchecked")
 	public JSONObject evaluate() throws EvaluatorException {
 		JSONObject object = new JSONObject();
 		Player player = game.getPlayer();
